@@ -7,4 +7,4 @@ After watching this [video](https://www.youtube.com/watch?v=EOQqi6Yun7g), I deci
 
 AppSync has an example Api named 'Event App' that uses multi-table design (entity tables), so I decided to adapt this same api to single-table-design. I used NoSQL Workbench to model the relationships.
 
-![NoSQLWorkbenchScreenshot](modeling.png)
+![NoSQLWorkbenchScreenshot](images/modeling.png)
