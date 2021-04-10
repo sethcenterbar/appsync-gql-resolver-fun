@@ -1,8 +1,7 @@
 import boto3
 import pprint
-from types import SimpleNamespace
-import json
 
+# Let's try out the meta client https://twitter.com/jsaryer/status/1380593403705065486
 client = boto3.resource("dynamodb").meta.client
 
 
@@ -10,7 +9,7 @@ def get_event():
     pass
 
 
-class comment:
+class Comment:
     def __init__(self, pk, sk, type, content) -> None:
         self.pk = pk
         self.sk = sk
@@ -21,7 +20,7 @@ class comment:
         return "Comment says: " + self.content
 
 
-class event:
+class Event:
     def __init__(self, pk, sk, type, content) -> None:
         self.pk = pk
         self.sk = sk
@@ -46,12 +45,13 @@ def get_event_details(eventId):
 
     items = response["Items"]
 
+    # Try serializing multiple entities from a single request
     for item in items:
         if item["sk"] == item["pk"]:
-            e = event(**item)
+            e = Event(**item)
             pprint.pprint(str(e))
         else:
-            c = comment(**item)
+            c = Comment(**item)
             pprint.pprint(str(c))
 
 
